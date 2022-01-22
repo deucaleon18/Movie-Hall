@@ -1,11 +1,16 @@
 const path = require('path')
 const fs = require('fs');
+const data = ["Movie 1","Movie 2","Movie 3","Movie 4"];
 const home = (req,res)=>{
     res.render('home',{title:'Home'});
  }
-
-const err = (req,res)=>{
-    res.send("ERROR");
+ const getid = (req,res)=>{
+    const id=req.params.id -1;
+      res.render('seats',{index:id,data:data});
+        
+}
+ const err = (req,res)=>{
+    res.render('error',{title:'Error'});
 }
 const bookslot = (req,res) => {
     const seats_booked = req.body.seats;
@@ -24,7 +29,6 @@ const bookslot = (req,res) => {
     fs.writeFileSync(__dirname+"/Database/SeatMatrix.json",JSON.stringify(data));
     res.sendStatus(200);
 }
-
 const cancelslot = (req,res) => {
     const seats_cancel = req.body.seats;
     const movie_name = req.params.id;
@@ -37,4 +41,4 @@ const cancelslot = (req,res) => {
     fs.writeFileSync(__dirname+"/Database/SeatMatrix.json",JSON.stringify(data));
     res.sendStatus(200);
 }
-module.exports = {home,err,bookslot,cancelslot}
+module.exports = {home,err,bookslot,cancelslot,getid}
