@@ -3,6 +3,11 @@ body{
     overflow: auto;
     font-family: 'Montserrat', sans-serif;
 }
+*{
+    border:0;
+    padding:0;
+
+}
 .title{
     text-align: center;
     font-size: 30px;
@@ -58,4 +63,41 @@ body{
     font-size: x-large;
     text-align: center;
     font-weight: 900;
+}
+
+
+
+/* Movie Page */
+.movie-page{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+}
+
+.movie-page-header{
+
+  font-size:1.2rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin: 100px;
+}
+
+.seats-display{
+     
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:50%;
+    margin:auto;
+}
+
+.seat{
+    width:8%;
+    margin:5px;
+    /* padding:10px; */
+    display: flex;
+    align-items: center;
 }

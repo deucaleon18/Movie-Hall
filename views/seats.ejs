@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+ 
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-        <title><%= data[index]%></title>
+        <title>
+            <%= data[index].name %>
+        
+        </title>
         <link rel="stylesheet" href="/Styles.css">
     </head>
     <body>
-        <div class = "header">
-            <p class = "title"><%= data[index]%></p>
+
+
+        <div class="movie-page" >
+        <div class = "movie-page-header">
+
+        <div class="movie-title">
+            <%= data[index].name %>
+
+        </div>
+            <%= console.log(index,15) %>
+          <%= console.log(data[index].name) %>
         </div>
          
+        <div class="seats-display">
+        <% data[index].seats.forEach((seat)=>{ %>
+
+             <div class="seat">
+             <% if(seat==1){ %>
+              <span style="height:20px;width:30px;padding:10px">
+              
+                 <img src="/assets/couch-solid copy.svg"/>
+                </span>
+            <% }else if(seat==0){ %>
+
+            <span style="height:20px;width:30px;padding:10px">
+            
+               <img src="/assets/couch-solid.svg"/>
+              </span>
+          <% } %>
+          
+             </div>
+
+        <% }) %> 
+        </div>
+    </div>
+
+
+
+
         
         <%- include('../public/partials/footer') %>
     </body>
