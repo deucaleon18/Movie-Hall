@@ -12,7 +12,7 @@
             <p class = "title">Movie Booking System</p>
         </div>
         <div class="wrapper">
-            <div class="card">
+            <div class="card"'>
                 <h2>Movie 1</h2>
                 <h4>Info 1</h4>
                 <img src = "/assets/image.jpeg" alt="Movie" class="centre">
@@ -35,4 +35,15 @@
         </div>
         <%- include('../public/partials/footer') %>
     </body>
+
+    <script>
+          const movie = document.querySelectorAll('.card');
+          movie.forEach(function (value, i) {
+          value.addEventListener('click', ()=>{
+              var x = ""+ (i+1);
+               location.assign('/'+x)
+          })
+         });
+
+    </script>
 </html>
