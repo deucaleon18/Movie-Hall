@@ -101,3 +101,21 @@ body{
     display: flex;
     align-items: center;
 }
+
+.submit-button{
+
+
+    height:50px;
+    width:150px;
+
+}
+
+.submit-button:hover{
+
+
+    background-color: black;
+    color:white;
+    cursor: pointer;
+
+}
+

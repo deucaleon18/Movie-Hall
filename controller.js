@@ -10,7 +10,6 @@ let data = JSON.parse(fs.readFileSync(
 
 const home = (req,res)=>{
     res.render('home',{title:'Home'});
-    
  }
 
 
@@ -18,7 +17,7 @@ const home = (req,res)=>{
 
     const id=req.params.id-1;
     console.log(id)
-      res.render('seats',{index:id,data:data});
+      res.render('seats',{movieIndex:id,data:data});
         
 }
 
@@ -29,15 +28,18 @@ const home = (req,res)=>{
 
 
 const bookslot = (req,res) => {
-    const seats_booked = req.body.seats;
-    const movie_name = req.params.id;
+    const seats_booked = req.body;
+    const movie_name = req.params.id-1;
 
     let check = false;
-   
+    console.log(req.body)
+    // console.log(req.body.seats)
+    // console.log(seats_booked)
     seats_booked.forEach(element => {
         if(data[movie_name].seats[element-1]==1){
             check = true;
             res.sendStatus(400).json({"status":false});
+      
         }
         data[movie_name].seats[element-1] += 1; 
     });
@@ -50,7 +52,7 @@ const bookslot = (req,res) => {
 
 const cancelslot = (req,res) => {
     const seats_cancel = req.body.seats;
-    const movie_name = req.params.id;
+    const movie_name = req.params.id-1;
     let data = JSON.parse(fs.readFileSync(
         path.resolve(__dirname+"/Database/SeatMatrix.json")
     ));
