@@ -24,36 +24,38 @@
             <%= console.log(index,15) %>
           <%= console.log(data[index].name) %>
         </div>
-         
+        <% let c = 0%>
         <div class="seats-display">
         <% data[index].seats.forEach((seat)=>{ %>
-
              <div class="seat">
              <% if(seat==1){ %>
               <span style="height:20px;width:30px;padding:10px">
-              
                  <img src="/assets/couch-solid copy.svg"/>
                 </span>
+                <p id="value<%=c%>" onclick="myFunction()" data-id="value<%=c%>"><%=c%></p>
             <% }else if(seat==0){ %>
 
             <span style="height:20px;width:30px;padding:10px">
-            
                <img src="/assets/couch-solid.svg"/>
               </span>
+              <p id="value<%=c%>" onclick="myFunction()" data-id="value<%=c%>"><%=c%></p>
           <% } %>
-          
+              <% c++ %>
              </div>
 
         <% }) %> 
         </div>
     </div>
-
-
-
-
-        
         <%- include('../public/partials/footer') %>
     </body>
-
+    <script>
+        let arr = []
+        function myFunction(){
+            var x = event.target.getAttribute("data-id")
+            const key = document.getElementById(x).innerHTML
+            arr.push(key);
+        }
+        console.log(arr)
+    </script>
      
 </html>
