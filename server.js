@@ -1,14 +1,11 @@
-const express = require('express');
-const  path  = require('path');
-const app = express();
-const morgan = require('morgan');
-const routes = require('./routes');
+const express = require('express')
 
-app.set('view engine','ejs');
-app.use(express.static(path.join((__dirname,'public'))));
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+const app = express()
 
-app.listen(3000);
-app.use(routes);
+app.get('/', (req, res) => {
+    res.send('Hello!')
+})
+
+app.listen(3000, () => {
+    console.log('listenning on port', 3000)
+})
