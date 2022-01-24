@@ -23,9 +23,14 @@
                 <%= data[movieIndex].name %>
 
             </div>
-            <%= console.log(movieIndex,15) %>
-                <%= console.log(data[movieIndex].name) %>
+            <div  class="movie-image">
+                <img style="width:320px;" src= <%= data[movieIndex].url %> />
+            </div>
         </div>
+        <div  class="movie-description">
+            <%= data[movieIndex].description %>
+       </div>
+      
         <% let c=0%>
         
             <div class="seats-display">
@@ -35,7 +40,6 @@
 
                             <span style="height:20px;width:30px;padding:10px;cursor:pointer;">
                                 <img class="sofa-icon" onclick="myFunction('<%= index %>')"  src="/assets/couch-solid copy.svg" />
-                                <p data-id="<%=index%>" hidden><%=index%></p>
                             </span>
 
                             <p  onclick="myFunction('<%= index %>')" >
@@ -57,18 +61,20 @@
             </div>
             <div>
                 <form>
-                    <button type="submit" class="submit-button">SUBMIT</button>
+                    <button type="submit" class="submit-button">BOOK NOW</button>
                 </form>
             </div>
 
     </div>
+
     <%- include('../public/partials/footer') %>
+
 </body>
 <script>
     let arr = []
     function myFunction(key) {
         document.getElementsByClassName("sofa-icon")[Number(key)].src="/assets/couch-solid copy 2.svg"
-       
+        
         arr.push(Number(key)+1);
         console.log(arr)
     }

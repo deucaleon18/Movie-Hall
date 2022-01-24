@@ -1,32 +1,31 @@
 const path = require('path')
 const fs = require('fs');
-
-
-
 let data = JSON.parse(fs.readFileSync(
     path.resolve(__dirname+"/Database/SeatMatrix.json")
 ));
 
 
+
+
+//Home page
 const home = (req,res)=>{
-    res.render('home',{title:'Home'});
+    res.render('home',{title:'MOVIX',data:data});
  }
 
-
+//Specific movie page
  const getid = (req,res)=>{
 
     const id=req.params.id-1;
     console.log(id)
-      res.render('seats',{movieIndex:id,data:data});
-        
+      res.render('seats',{movieIndex:id,data:data});    
 }
 
-
+//Error page
  const err = (req,res)=>{
     res.render('error',{title:'Error'});
 }
 
-
+//Slot booking 
 const bookslot = (req,res) => {
     const seats_booked = req.body;
     const movie_name = req.params.id-1;
@@ -49,7 +48,7 @@ const bookslot = (req,res) => {
 }
 
 
-
+//Slot cancellation not implemented
 const cancelslot = (req,res) => {
     const seats_cancel = req.body.seats;
     const movie_name = req.params.id-1;

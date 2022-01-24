@@ -10,6 +10,9 @@ body{
 
 }
 .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-weight:900;
     color: #DAA520;
@@ -29,11 +32,23 @@ body{
     border-radius: 10px;
     background-color: #DAA520;
 }
+
 .card:hover {
     cursor: pointer;
-    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
-  }
+    box-shadow: 0 20px 30px 0 rgba(0,0,0,0.5);
+}
+
+.card-title{
+    text-align:center;
+    font-weight: 800;
+    border-bottom: 2px solid black;
+}
+.card-description{
+    text-align:center;
+    height:36%;
+}
 .centre{
+  
     width: 95%;
     display: block;
     margin-left: auto;
@@ -70,15 +85,14 @@ body{
 
 
 /* Movie Page */
-.movie-page{
-  
+.movie-page{ 
    height: 100%;
    width:100%;
    display:flex;
+   text-align: center;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-
 }
 
 .movie-page-header{
@@ -86,13 +100,26 @@ body{
   width: fit-content;
   background-color: #A0522D;
   border-radius: 5px;
-  color: white;
   font-size:1.2rem;
   font-weight: 900;
-  margin: 100px;
-  border:10px solid black
+  margin: 10px;
+  border:6px solid white;
+  text-align: center;
+  color:white;
 }
 
+.movie-description{
+    padding:20px;
+    font-weight: 900;
+    border:6px solid white;
+    background-color: #A0522D;
+    font-size:1.2rem;
+    color:white;
+    width:80%;
+    margin:auto;
+    margin-bottom:20px;
+    margin-top:20px;
+}
 .seats-display{
     background-color: #FAFAD2; 
     border-radius: 10px;
@@ -121,8 +148,6 @@ body{
 }
 
 .submit-button:hover{
-
-
     background-color: black;
     color:white;
     cursor: pointer;
