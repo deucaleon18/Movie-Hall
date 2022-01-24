@@ -34,19 +34,20 @@
                         <% if(seat==1){ %>
 
                             <span style="height:20px;width:30px;padding:10px;cursor:pointer;">
-                                <img id='<%= index %>' onclick="myFunction('<%= index %>')" src="/assets/couch-solid copy.svg" />
+                                <img class="sofa-icon" onclick="myFunction('<%= index %>')"  src="/assets/couch-solid copy.svg" />
+                                <p data-id="<%=index%>" hidden><%=index%></p>
                             </span>
 
                             <p  onclick="myFunction('<%= index %>')" >
-                                <%=index%>
+                                <%=index+1%>
                             </p>
                             <% }else if(seat==0){ %>
 
                                 <span style="height:20px;width:30px;padding:10px;cursor:pointer;">
-                                    <img onclick="myFunction('<%= index %>')" src="/assets/couch-solid.svg" />
+                                    <img class="sofa-icon" onclick="myFunction('<%= index %>')" src="/assets/couch-solid.svg" />
                                 </span>
                                 <p  onclick="myFunction('<%= index %>')" >
-                                    <%=index%>
+                                    <%=index+1%>
                                 </p>
                                 <% } %>
                                     <% c++ %>
@@ -66,22 +67,30 @@
 <script>
     let arr = []
     function myFunction(key) {
-
-        arr.push(key);
+        document.getElementsByClassName("sofa-icon")[Number(key)].src="/assets/couch-solid copy 2.svg"
+       
+        arr.push(Number(key)+1);
         console.log(arr)
     }
 
     const form = document.querySelector('form')
-        form.addEventListener('submit',(e)=>{
+        form.addEventListener('submit',async(e)=>{
             e.preventDefault();
             console.log(arr)
             try {
-                const res =  fetch(`/book/${location.pathname.split('/')[2]}`,{
+                const res = await fetch(`/book/${location.pathname.split('/')[2]}`,{
                     method: 'POST',
                     body: JSON.stringify(arr),
                     headers: {'Content-Type':'application/json'}
-                });
-            
+                })
+                .then(()=>{
+                   
+                    
+                    if(!alert('Seats booked successfully!')){window.location.reload();}
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
             }
             catch(err){
                 console.log(err)
